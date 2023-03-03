@@ -1,0 +1,16 @@
+1.    Look up a name then get information: gender, origin(map), meaning, popularity, related names
+2.    Randomly generate names with categories: gender, popularity
+3.    Input: names that users like/dislike-localStorage: 
+Input in a modal?  or wire up a button on the generated name to click like or not
+
+create boiler plate html/css
+
+each group memeber work on a box:
+1. name searcher
+2. 10 name generator
+3. check name list
+
+for each box:
+step 1: use html to add buttons to box
+step 2: use css to style the internals of the box
+step 3: use javascripts to add fucntionality to the buttons
