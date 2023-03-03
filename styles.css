@@ -1,0 +1,32 @@
+nav{
+    border-style: dashed;
+    height: 10vh;
+    text-align: center;
+    background-color: #ccd8d2;
+}
+main{
+    border-style: dashed;
+    height: 90vh;
+    display: flex;
+}
+#cards{
+    border-style: dotted;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #cdd8ca;
+    
+}
+#dynamic_content{
+    width: 60%;
+    background-color: #efddcf;
+}
+.card{
+    width: 80%;
+    height: 30%;
+    border-style: groove;
+    margin: 10px;
+    background-color: #e6beb9;
+}
