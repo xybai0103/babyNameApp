@@ -21,26 +21,32 @@
                 
             </div>
             <div class = "card" id="Name_Generator">
-              <header class='card-header'>
-                <div class='card-header-title'>
-                  <p>
+              <header class='card-header has-background-danger'>
+                  <!--center card header-->
+                  <p class='card-header-title is-centered is-size-4'>
                     Randomly Generate 10 Baby Names
-                  </p>
-                </div>                  
+                  </p>           
               </header>
               <div class='card-content'>
-                <!--add select dropdown-->
-                <div class="select">
-                  <select>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Neutral</option>
-                  </select>
+                <!--add a select dropdown-->
+                <div class='select-gender is-flex'>
+                  <p class='is-inline-block is-size-5'>Select the Gender of Names:</p>
+                  <div class="select is-medium is-danger">
+                    <select>
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Neutral</option>
+                    </select>
+                  </div>
                 </div>
-                    
-                <div class='checkbox'></div>
-                <button type='submit' class='generate-button btn'>Generate</button>
-
+                <br>
+                <!--add a checkbox-->
+                <label class="checkbox is-size-5">
+                  <input class='checkbox-input' type="checkbox">
+                  Only return popular (top 10%) names
+                </label>
+                <br>
+                
               </div>              
             </div>
             <div class = "card" id="Baby_Name_List">
