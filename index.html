@@ -17,10 +17,25 @@
     </nav>
     <main>
         <div id="cards">
-            <div class = "card" id="Look_Up_Baby_Name">   
+            <div class = "card" id="Look_Up_Baby_Name">
+              <header class='card-header has-background-danger'>
+                <!--center card header-->
+                <p class='card-header-title is-centered is-size-4'>
+                   Look Up Baby Name
+                </p>           
+              </header>
+              <div class='card-content'>
+                <p class='is-size-5 has-text-centered'>Given Name</p>
+                <input class="input is-danger is-size-5 column is-9 has-text-centered" id="baby_name_input" type="text" placeholder="Emma">
+                <div class='button-container box has-text-centered'>
+                  <button class="button look-up-button is-medium is-danger is-light is-outlined">
+                    Get Information About This Name
+                  </button>
+                </div>
+              </div>
             </div>
+
             <div class = "card" id="Name_Generator">
-              
               <header class='card-header has-background-danger'>
                   <!--center card header-->
                   <p class='card-header-title is-centered is-size-4'>
@@ -48,7 +63,7 @@
                 <br>
                 <!--add a generate button-->
                 <!--wrap a box to center button-->
-                <div class='generate-button-container box has-text-centered'>
+                <div class='button-container box has-text-centered'>
                   <button class="button generate-button is-medium is-danger is-light is-outlined">
                     Generate
                   </button>

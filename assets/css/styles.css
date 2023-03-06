@@ -34,6 +34,7 @@ main{
     background-color: #e6beb9;
 }
 
+/*nameGenerateBox*/
 .select-gender{
     justify-content: space-evenly;
 }
@@ -52,6 +53,15 @@ main{
     padding: 0 9rem;
 }
 
-.generate-button-container{
+.button-container{
     background-color: #e6beb9;
+}
+
+/*searchNameBox*/
+.look-up-button{
+    padding: 0 3rem;
+}
+
+#baby_name_input{
+    margin: 0 auto;
 }
