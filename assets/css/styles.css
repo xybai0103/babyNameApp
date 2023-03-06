@@ -28,8 +28,30 @@ main{
 }
 .card{
     width: 80%;
-    height: 30%;
     border-style: groove;
     margin: 10px;
     background-color: #e6beb9;
+}
+#Look_Up_Baby_Name{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#baby_Name_Header{
+    height: 20%;
+    width: 100%;
+    margin-top: -7px;
+    background-color: #ccd8d2;
+    border-style: groove;
+    text-align: center;
+}
+
+#Look_Up_Baby_Name input{
+    width: 90%;
+    height: 20%;
+}
+#Look_Up_Baby_Name button{
+    width: 90%;
+    height:20%;
 }
