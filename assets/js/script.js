@@ -3,4 +3,5 @@ $(button).on("#card3"); {
     var babyName = ("")
     localStorage.setItem("card3")
     localStorage.removeItem("card3")
+    addEventListener("#card3")
 };
