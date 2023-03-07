@@ -1,7 +1,31 @@
-//button in jquery W/ local storage
-$(button).on("#card3"); {
-    var babyName = ("")
-    localStorage.setItem("card3")
-    localStorage.removeItem("card3")
-    addEventListener("#card3")
-};
+/* Initialize variables */
+// an acquired API key to use babyName API
+var APIKey = 'jmjo9cnRKX3lkeCzzsTXtA==f4OpgctSgGbxedYt';
+// button to generate baby names
+var generateBtn = $('.generate-button');
+
+
+/* Define functions */
+function callGenerateAPI() {
+  var gender = $('#gender-category').val();
+  var popular = $('.checkbox').prop('checked');
+  var babyNameGenerateURL = 'https://api.api-ninjas.com/v1/babynames?gender=' + gender + '&popular_only=' + popular;
+  // call the API with the constructed URL
+  fetch(babyNameGenerateURL,{
+    headers: {
+      'X-Api-Key': APIKey
+    }  
+  })
+  // .then(function(response){
+  //     return response.json();
+  //   })
+  //   .then(function(data){
+  //     console.log(data);
+  //   })
+    .then(response => response.json())
+    .then(data => console.log(data))
+ }
+
+
+ /*Add Event Listeners*/
+ generateBtn.click(callGenerateAPI);
