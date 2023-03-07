@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Add link to the fontawesome library to show icons-->
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!--Add link to the bulma library-->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css'>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <title>Baby Name</title>
 </head>
@@ -14,19 +18,72 @@
     <main>
         <div id="cards">
             <div class = "card" id="Look_Up_Baby_Name">
-                <div id = "baby_Name_Header">Look Up Baby Name</div>
-                <div id = "minor_baby_Name_Header">Givenname</div>
-                <input type="text" id="baby_name_input" name="baby_name_input">
-                <button>Get Information About This Name</button>
+              <header class='card-header has-background-danger'>
+                <!--center card header-->
+                <p class='card-header-title is-centered is-size-4'>
+                   Look Up Baby Name
+                </p>           
+              </header>
+              <div class='card-content'>
+                <p class='is-size-5 has-text-centered'>Given Name</p>
+                <input class="input is-danger is-size-5 column is-9 has-text-centered" id="baby_name_input" type="text" placeholder="Emma">
+                <div class='button-container box has-text-centered'>
+                  <button class="button look-up-button is-medium is-danger is-light is-outlined">
+                    Get Information About This Name
+                  </button>
+                </div>
+              </div>
             </div>
+
             <div class = "card" id="Name_Generator">
-                
+              <header class='card-header has-background-danger'>
+                  <!--center card header-->
+                  <p class='card-header-title is-centered is-size-4'>
+                    Randomly Generate 10 Baby Names
+                  </p>           
+              </header>
+              <div class='card-content'>
+                <!--add a select dropdown-->
+                <div class='select-gender is-flex'>
+                  <p class='is-inline-block is-size-5'>Select the Gender of Names:</p>
+                  <div class="select is-medium is-danger">
+                    <select>
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Neutral</option>
+                    </select>
+                  </div>
+                </div>
+                <br>
+                <!--add a checkbox-->
+                <label class="checkbox is-size-5">
+                  <input class='checkbox-input' type="checkbox">
+                  Only Return Popular (Top 10%) Names
+                </label>
+                <br>
+                <!--add a generate button-->
+                <!--wrap a box to center button-->
+                <div class='button-container box has-text-centered'>
+                  <button class="button generate-button is-medium is-danger is-light is-outlined">
+                    Generate
+                  </button>
+                </div>
+              </div>              
             </div>
             <div class = "card" id="Baby_Name_List">
-                <p>Check which baby names you added to your list</p>
-                <hr>
-                <button>Check List</button>
-                
+              <header class='card-header has-background-danger'>
+                <!--center card header-->
+                <p class='card-header-title is-centered is-size-4'>
+                  Check which baby names you added to your list
+                </p>           
+              </header>
+              <div class='card-content'>
+                <div class='button-container box has-text-centered'>
+                  <button class="button check-list-button is-medium is-danger is-light is-outlined">
+                    Check List
+                  </button>
+                </div>
+              </div>          
             </div>
         </div>
         <div id="dynamic_content">
@@ -36,6 +93,6 @@
     <aside>
 
     </aside>
-    <script src="./assets/js/scripts.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
