@@ -15,8 +15,26 @@ var generatedNameList = $('.generated-name-list');
 var popularText = $('.popular-text');
 // the add-name button
 var addNameBtn =$('.add-name-button');
+// get the names from local storage
+var names = JSON.parse(localStorage.getItem('names'))||[];
 
-/* Define functions */
+
+
+/* Define funtions */
+// store the names which user added
+function storeNames(){
+  localStorage.setItem('names', JSON.stringify(names));
+} 
+
+// add clicked name to local storage
+function addNameToLocalStorage(){
+  var name = $(this).parent().val();
+  console.log(name);
+  names.push(name);
+  storeNames();
+ }
+
+// function to generate baby names 
 function generateBabyNames() {
   // user's input for the dropdown menu and the checkbox
   var gender = $('#gender-category').val();
@@ -60,27 +78,27 @@ function generateBabyNames() {
         addNameBtn.append(plusSymbol);
         generatedName.append(addNameBtn);
         generatedNameList.append(generatedName);
+
+        /*Add Event Listener to add-name button*/
+        addNameBtn.click(addNameToLocalStorage); 
       };
     })
  }
 
- // get the names from local storage
- var names = JSON.parse(localStorage.getItem('names'))||[];
- // store the names which user added
- var storeNames = localStorage.setItem('names', JSON.stringify(names));
 
-
- /*Add Event Listeners*/
+ /*Add Event Listener to generate-name button*/
  generateBtn.click(generateBabyNames);
- // only store it, rodney would get it and render it
- // if already, add, not show again
- addNameBtn.click(addNameToLocalStorage);
 
- function addNameToLocalStorage(){
-  var name = $(this).parent.text();
-  names.push(name);
-  storeNames();
- }
+ // only store it, rodney would get it and render it
+ // not store 'add'
+ // if already, add, not show again
+
+
+  
+  
+
+
+
 
  
 
