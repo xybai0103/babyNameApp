@@ -11,23 +11,23 @@ var generatedNnameHeader = $('.generated-name-header');
 var genderText = $('.gender-text');
 // a list containing the 10 randomly generated baby names
 var generatedNameList = $('.generated-name-list');
+// the text in the generated-name-header showing popularity
+var popularText = $('.popular-text');
 
 
 /* Define functions */
 function generateBabyNames() {
   // user's input for the dropdown menu and the checkbox
   var gender = $('#gender-category').val();
-  var popular = $('.checkbox').prop('checked');
+  var popular = $('.checkbox-input').prop('checked');
+  console.log(popular);
   // show different texts corresponding to user's input
   genderText.text(gender + ' ');
-  // if(popular){
-  //   // create the text showing popularity in the generated-name-header
-  //   var popularText = $('<span>');
-  //   popularText.addClass('popular-text')
-  //   popularText.text(' (Top 10% Most Popular)')
-  //   generatedNnameHeader.append(popularText);
-  // };
-  // // // fix bug above!!
+  if(popular){
+    popularText.show();
+  }else{
+    popularText.hide();
+  }
 
   // the constructed URL based on user's input
   var babyNameGenerateURL = 'https://api.api-ninjas.com/v1/babynames?gender=' + gender + '&popular_only=' + popular;
