@@ -18,8 +18,8 @@ function generateBabyNames() {
   // user's input for the dropdown menu and the checkbox
   var gender = $('#gender-category').val();
   var popular = $('.checkbox').prop('checked');
-  // // show different texts corresponding to user's input
-  // genderText.text(gender + ' ');
+  // show different texts corresponding to user's input
+  genderText.text(gender + ' ');
   // if(popular){
   //   // create the text showing popularity in the generated-name-header
   //   var popularText = $('<span>');
@@ -27,7 +27,7 @@ function generateBabyNames() {
   //   popularText.text(' (Top 10% Most Popular)')
   //   generatedNnameHeader.append(popularText);
   // };
-  // // fix bug above!!
+  // // // fix bug above!!
 
   // the constructed URL based on user's input
   var babyNameGenerateURL = 'https://api.api-ninjas.com/v1/babynames?gender=' + gender + '&popular_only=' + popular;
@@ -42,6 +42,7 @@ function generateBabyNames() {
     })
     .then(function(data){
       console.log(data);
+      generatedNameList.html('');
       // loop through the name array and generate list to display the names
       for(i=0; i<data.length; i++){
         // create a list item tag for each generated name
