@@ -83,15 +83,18 @@ function generateBabyNames() {
 //   };
 //  });
 
-//*work: delegates the listener to all buttons inside the parent element
+//*works: delegates the listener to all buttons inside the parent element
 // Add Event Listener to add-name button
-// add clicked name to local storage
+// Store clicked name to local storage
 generatedNameList.on('click','button',function(){
   var nameAdd = $(this).parent().text();
+  // only show name, excluding the text in add button
   var name = nameAdd.replace('Add', '');
   console.log(name);
+  if(!names.includes(name)){
     names.push(name);
     storeNames();
+  }
 });
 
 
@@ -101,9 +104,6 @@ generatedNameList.on('click','button',function(){
  generateBtn.click(generateBabyNames);
  // Add Event Listener to add-name button
 
-
- // not store 'add'
- // if already, add, not show again
  // hide
 
 
