@@ -42,23 +42,23 @@ function generateBabyNames() {
     })
     .then(function(data){
       console.log(data);
-      // // loop through the name array and generate list to display the names
-      // for(i=0; i<data.length; i++){
-      //   // create a list item tag for each generated name
-      //   var generatedName = $('<li>');
-      //   generatedName.addClass('generated-name')
-      //   generatedName.text(data[i]);
-      //   // wire up an add-name button after each name
-      //   var addNameBtn =$('<button>');
-      //   addNameBtn.addClass('add-name-button is-size-5');
-      //   addNameBtn.text('Add ')
-      //   // add a plus symbol for the add-name button
-      //   var plusSymbol = $('<i>');
-      //   plusSymbol.addClass('plus-symbol fa fa-plus');
-      //   addNameBtn.append(plusSymbol);
-      //   generatedName.append(addNameBtn);
-      //   generatedNameList.append(generatedName);
-      // };
+      // loop through the name array and generate list to display the names
+      for(i=0; i<data.length; i++){
+        // create a list item tag for each generated name
+        var generatedName = $('<li>');
+        generatedName.addClass('generated-name')
+        generatedName.text(data[i]);
+        // wire up an add-name button after each name
+        var addNameBtn =$('<button>');
+        addNameBtn.addClass('add-name-button is-size-5');
+        addNameBtn.text('Add ')
+        // add a plus symbol for the add-name button
+        var plusSymbol = $('<i>');
+        plusSymbol.addClass('plus-symbol fa fa-plus');
+        addNameBtn.append(plusSymbol);
+        generatedName.append(addNameBtn);
+        generatedNameList.append(generatedName);
+      };
     })
  }
 
