@@ -13,7 +13,8 @@ var genderText = $('.gender-text');
 var generatedNameList = $('.generated-name-list');
 // the text in the generated-name-header showing popularity
 var popularText = $('.popular-text');
-
+// the add-name button
+var addNameBtn =$('.add-name-button');
 
 /* Define functions */
 function generateBabyNames() {
@@ -63,11 +64,25 @@ function generateBabyNames() {
     })
  }
 
+ // get the names from local storage
+ var names = JSON.parse(localStorage.getItem('names'))||[];
+ // store the names which user added
+ var storeNames = localStorage.setItem('names', JSON.stringify(names));
+
 
  /*Add Event Listeners*/
  generateBtn.click(generateBabyNames);
+ // only store it, rodney would get it and render it
+ // if already, add, not show again
+ addNameBtn.click(addNameToLocalStorage);
 
+ function addNameToLocalStorage(){
+  var name = $(this).parent.text();
+  names.push(name);
+  storeNames();
+ }
 
+ 
 
 var dynamic_content = document.getElementById("dynamic_content")
 $("#get-name-information").on("click",function(){
