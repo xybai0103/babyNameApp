@@ -3,7 +3,7 @@
 var APIKey = 'jmjo9cnRKX3lkeCzzsTXtA==f4OpgctSgGbxedYt';
 // button to generate baby names
 var generateBtn = $('.generate-button');
-// the container of all the synamic content for name-generating box
+// the container of all the dynamic content for name-generating box
 var generatedNameContainer = $('.generated-name-container');
 // the header above the generated baby names
 var generatedNnameHeader = $('.generated-name-header');
@@ -21,6 +21,9 @@ var names = JSON.parse(localStorage.getItem('names'))||[];
 
 
 /* Define funtions */
+// hide the dynamic content for name-generating box on the right when first-loading or refreshing the page
+generatedNameContainer.hide();
+
 // store the names which user added
 function storeNames(){
   localStorage.setItem('names', JSON.stringify(names));
@@ -28,6 +31,7 @@ function storeNames(){
 
 // function to generate baby names 
 function generateBabyNames() {
+  generatedNameContainer.show();
   // user's input for the dropdown menu and the checkbox
   var gender = $('#gender-category').val();
   var popular = $('.checkbox-input').prop('checked');
@@ -97,12 +101,10 @@ generatedNameList.on('click','button',function(){
   }
 });
 
-
  
 /*Add Event Listeners*/
  // Add Event Listener to generate-name button
  generateBtn.click(generateBabyNames);
- // Add Event Listener to add-name button
 
  // hide
 
