@@ -26,14 +26,6 @@ function storeNames(){
   localStorage.setItem('names', JSON.stringify(names));
 } 
 
-// add clicked name to local storage
-function addNameToLocalStorage(){
-  var name = $(this).parent().val();
-  console.log(name);
-  names.push(name);
-  storeNames();
- }
-
 // function to generate baby names 
 function generateBabyNames() {
   // user's input for the dropdown menu and the checkbox
@@ -78,20 +70,42 @@ function generateBabyNames() {
         addNameBtn.append(plusSymbol);
         generatedName.append(addNameBtn);
         generatedNameList.append(generatedName);
-
-        /*Add Event Listener to add-name button*/
-        addNameBtn.click(addNameToLocalStorage); 
       };
     })
  }
+//*not work: attaches the listener to the parent element and checks if the clicked element is a button
+//  generatedNameList.on('click', function(){
+//   if ($(this).is('button')){
+//    var nameAdd = $(this).parent().text();
+//    var name = nameAdd.replace('Add', '');
+//    names.push(name);
+//    storeNames();
+//   };
+//  });
+
+//*work: delegates the listener to all buttons inside the parent element
+// Add Event Listener to add-name button
+// add clicked name to local storage
+generatedNameList.on('click','button',function(){
+  var nameAdd = $(this).parent().text();
+  var name = nameAdd.replace('Add', '');
+  console.log(name);
+    names.push(name);
+    storeNames();
+});
 
 
- /*Add Event Listener to generate-name button*/
+ 
+/*Add Event Listeners*/
+ // Add Event Listener to generate-name button
  generateBtn.click(generateBabyNames);
+ // Add Event Listener to add-name button
 
- // only store it, rodney would get it and render it
+
  // not store 'add'
  // if already, add, not show again
+ // hide
+
 
 
   
