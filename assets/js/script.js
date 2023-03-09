@@ -1,16 +1,16 @@
-// /* Initialize variables */
-// // an acquired API key to use babyName API
-// var APIKey = 'jmjo9cnRKX3lkeCzzsTXtA==f4OpgctSgGbxedYt';
-// // button to generate baby names
-// var generateBtn = $('.generate-button');
-// // the container of all the synamic content for name-generating box
-// var generatedNameContainer = $('.generated-name-container');
-// // the header above the generated baby names
-// var generatedNnameHeader = $('.generated-name-header');
-// // the text showing gender in the generated-name-header
-// var genderText = $('.gender-text');
-// // a list containing the 10 randomly generated baby names
-// var generatedNameList = $('.generated-name-list');
+/* Initialize variables */
+// an acquired API key to use babyName API
+var APIKey = 'jmjo9cnRKX3lkeCzzsTXtA==f4OpgctSgGbxedYt';
+// button to generate baby names
+var generateBtn = $('.generate-button');
+// the container of all the synamic content for name-generating box
+var generatedNameContainer = $('.generated-name-container');
+// the header above the generated baby names
+var generatedNnameHeader = $('.generated-name-header');
+// the text showing gender in the generated-name-header
+var genderText = $('.gender-text');
+// a list containing the 10 randomly generated baby names
+var generatedNameList = $('.generated-name-list');
 
 
 /* Define functions */
