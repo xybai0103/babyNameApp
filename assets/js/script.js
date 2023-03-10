@@ -79,17 +79,9 @@ function generateBabyNames() {
       };
     })
  }
-//*not work: attaches the listener to the parent element and checks if the clicked element is a button
-//  generatedNameList.on('click', function(){
-//   if ($(this).is('button')){
-//    var nameAdd = $(this).parent().text();
-//    var name = nameAdd.replace('Add', '');
-//    names.push(name);
-//    storeNames();
-//   };
-//  });
 
-//*works: delegates the listener to all buttons inside the parent element
+
+//Delegates the listener to all buttons inside the parent element
 // Add Event Listener to add-name button
 // Store clicked name to local storage
 generatedNameList.on('click','button',function(){
@@ -107,8 +99,6 @@ generatedNameList.on('click','button',function(){
 /*Add Event Listeners*/
  // Add Event Listener to generate-name button
  generateBtn.click(generateBabyNames);
-
- // hide
 
 
 
