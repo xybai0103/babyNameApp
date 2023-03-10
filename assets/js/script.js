@@ -93,7 +93,7 @@ function generateBabyNames() {
 generatedNameList.on('click','button',function(){
   var nameAdd = $(this).parent().text();
   // only show name, excluding the text in add button
-  var name = nameAdd.replace('Add', '');
+  var name = nameAdd.replace('Add ', '');
   console.log(name);
   if(!names.includes(name)){
     names.push(name);
