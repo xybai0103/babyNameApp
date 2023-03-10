@@ -118,7 +118,12 @@ generatedNameList.on('click','button',function(){
 
  
 
-var dynamic_content = document.getElementById("dynamic_content")
+//var dynamic_content = document.getElementById("dynamic_content")
+
+var babyNameCard = $("#BabyName")
+var genderInformation = $("#gender-information")
+var associatedLanguages= $("#associated-languages")
+
 $("#get-name-information").on("click",function(){
     inputValue = $("#baby_name_input").val()
     console.log(inputValue)
@@ -126,7 +131,42 @@ $("#get-name-information").on("click",function(){
         return response.json();
     })
     .then(function(data){
-        console.log(data);
+        babyNameCard.text("Baby Name: "+ inputValue);
+        console.log(data)
+        if(data.error == "name could not be found"){
+
+            genderInformation.text("NAME CANNOT BE FOUND IN DATABASE")
+            associatedLanguages.text("NAME CANNOT BE FOUND IN DATABASE")
+        }
+        else{
+            if (data[0].gender == "f"){
+                genderInformation.text("Commonly Associated Gender: Female")
+            }
+            else{
+                genderInformation.text("Commonly Associated Gender: Female")
+            }
+            var associatedLanguagesFiller = "";
+            if(data[0].usages.length == 1){
+                associatedLanguagesFiller = data[0].usages[0].usage_full
+            }
+            else{
+                for(var i=0; i< data[0].usages.length;  i++){
+                    associatedLanguagesFiller = associatedLanguagesFiller + data[0].usages[i].usage_full + ", "
+                }
+            }
+            associatedLanguages.text("Commonly Associated Language: " +associatedLanguagesFiller)
+        }
+
+
+
+
     });
+    $("#addButton").on("click",function(){
+        var nameAdd = $("#baby_name_input").val()
+        console.log(nameAdd);
+        if(!names.includes(nameAdd)){
+          names.push(nameAdd);
+          storeNames();
+    }})
     
 });
