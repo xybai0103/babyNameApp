@@ -24,6 +24,7 @@ var names = JSON.parse(localStorage.getItem('names'))||[];
 // hide the dynamic content for name-generating box on the right when first-loading or refreshing the page
 generatedNameContainer.hide();
 
+
 // store the names which user added
 function storeNames(){
   localStorage.setItem('names', JSON.stringify(names));
@@ -31,6 +32,7 @@ function storeNames(){
 
 // function to generate baby names 
 function generateBabyNames() {
+  given_name_information.hide();
   generatedNameContainer.show();
   // user's input for the dropdown menu and the checkbox
   var gender = $('#gender-category').val();
@@ -118,15 +120,57 @@ generatedNameList.on('click','button',function(){
 
  
 
-var dynamic_content = document.getElementById("dynamic_content")
+//var dynamic_content = document.getElementById("dynamic_content")
+
+var babyNameCard = $("#BabyName")
+var genderInformation = $("#gender-information")
+var associatedLanguages= $("#associated-languages")
+var given_name_information = $(".given-name-information")
+given_name_information.hide();
 $("#get-name-information").on("click",function(){
+    given_name_information.show();
     inputValue = $("#baby_name_input").val()
     console.log(inputValue)
     fetch("https://www.behindthename.com/api/lookup.json?name=" + inputValue+"&key=re323908171").then(function(response){
         return response.json();
     })
     .then(function(data){
-        console.log(data);
+        babyNameCard.text("Baby Name: "+ inputValue);
+        console.log(data)
+        if(data.error == "name could not be found"){
+
+            genderInformation.text("NAME CANNOT BE FOUND IN DATABASE")
+            associatedLanguages.text("NAME CANNOT BE FOUND IN DATABASE")
+        }
+        else{
+            if (data[0].gender == "f"){
+                genderInformation.text("Commonly Associated Gender: Female")
+            }
+            else{
+                genderInformation.text("Commonly Associated Gender: Female")
+            }
+            var associatedLanguagesFiller = "";
+            if(data[0].usages.length == 1){
+                associatedLanguagesFiller = data[0].usages[0].usage_full
+            }
+            else{
+                for(var i=0; i< data[0].usages.length;  i++){
+                    associatedLanguagesFiller = associatedLanguagesFiller + data[0].usages[i].usage_full + ", "
+                }
+            }
+            associatedLanguages.text("Commonly Associated Language: " +associatedLanguagesFiller)
+        }
+
+
+
+
     });
+    $("#addButton").on("click",function(){
+        var nameAdd = $("#baby_name_input").val()
+        console.log(nameAdd);
+        if(!names.includes(nameAdd)){
+          names.push(nameAdd);
+          storeNames();
+    }})
     
 });
