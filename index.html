@@ -12,9 +12,15 @@
     <title>Baby Name</title>
 </head>
 <body>
-    <nav>
-        <p>baby name generator</p>
-    </nav>
+    <header>
+      <h1>Baby Name Generator</h1>
+      <nav>
+        <a href="#given-name-information">Look Up a Baby Name</a>
+        <a href="#generated-name-container">Generate Some Baby Names</a>
+        <a href="#added-name-list-container">Check Your Name List</a>
+      </nav>
+    </header>
+
     <main>
         <div id="cards">
             <div class = "card" id="Look_Up_Baby_Name">
@@ -87,7 +93,7 @@
             </div>
         </div>
         <div id="dynamic_content">
-          <section class='generated-name-container'>
+          <section id='generated-name-container'>
             <p class='generated-name-header is-size-4 has-text-weight-medium has-text-centered block'>
               10 <span class='gender-text'></span>Baby Names
               <span class='popular-text'> (Top 10% Most Popular)</span>
@@ -102,7 +108,7 @@
               </li> -->
             </ul>
           </section>
-          <section class="given-name-information">
+          <section id="given-name-information">
             <div class="card" id="displayed-information">
               <div class="card">
                 <div class="columns">
@@ -116,7 +122,7 @@
             </div>
           </section>
           <!--Rodney's section begin to show dynamic content of added name list with remove button-->
-          <section class='added-name-list-container'>
+          <section id='added-name-list-container'>
             <p class='added-name-list-header is-size-4 has-text-weight-medium has-text-centered block'>
               Your Baby Name List
             </p>
