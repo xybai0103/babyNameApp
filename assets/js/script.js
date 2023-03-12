@@ -1,10 +1,12 @@
 /* Initialize variables */
 // an acquired API key to use babyName API
 var APIKey = 'jmjo9cnRKX3lkeCzzsTXtA==f4OpgctSgGbxedYt';
+// the container of the content for first loading page
+var firstLoadingContainer = $('#first-loading-container');
 // button to generate baby names
 var generateBtn = $('.generate-button');
 // the container of all the dynamic content for name-generating box
-var generatedNameContainer = $('.generated-name-container');
+var generatedNameContainer = $('#generated-name-container');
 // the header above the generated baby names
 var generatedNnameHeader = $('.generated-name-header');
 // the text showing gender in the generated-name-header
@@ -17,12 +19,16 @@ var popularText = $('.popular-text');
 var addNameBtn =$('.add-name-button');
 // get the names from local storage
 var names = JSON.parse(localStorage.getItem('names'))||[];
+// the container of all the dynamic content for name-list box
+var addedNameListContainer = $('#added-name-list-container');
+
 
 
 
 /* Define funtions */
 // hide the dynamic content for name-generating box on the right when first-loading or refreshing the page
 generatedNameContainer.hide();
+addedNameListContainer.hide();
 
 
 // store the names which user added
@@ -32,6 +38,7 @@ function storeNames(){
 
 // function to generate baby names 
 function generateBabyNames() {
+  firstLoadingContainer.hide();
   given_name_information.hide();
   generatedNameContainer.show();
   // user's input for the dropdown menu and the checkbox
@@ -79,17 +86,8 @@ function generateBabyNames() {
       };
     })
  }
-//*not work: attaches the listener to the parent element and checks if the clicked element is a button
-//  generatedNameList.on('click', function(){
-//   if ($(this).is('button')){
-//    var nameAdd = $(this).parent().text();
-//    var name = nameAdd.replace('Add', '');
-//    names.push(name);
-//    storeNames();
-//   };
-//  });
 
-//*works: delegates the listener to all buttons inside the parent element
+// Delegates the listener to all buttons inside the parent element
 // Add Event Listener to add-name button
 // Store clicked name to local storage
 generatedNameList.on('click','button',function(){
@@ -108,8 +106,6 @@ generatedNameList.on('click','button',function(){
  // Add Event Listener to generate-name button
  generateBtn.click(generateBabyNames);
 
- // hide
-
 
 
   
@@ -125,9 +121,11 @@ generatedNameList.on('click','button',function(){
 var babyNameCard = $("#BabyName")
 var genderInformation = $("#gender-information")
 var associatedLanguages= $("#associated-languages")
-var given_name_information = $(".given-name-information")
+var given_name_information = $("#given-name-information")
 given_name_information.hide();
 $("#get-name-information").on("click",function(){
+    firstLoadingContainer.hide();
+    generatedNameContainer.hide();
     given_name_information.show();
     inputValue = $("#baby_name_input").val()
     console.log(inputValue)
