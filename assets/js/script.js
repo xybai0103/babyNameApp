@@ -120,6 +120,7 @@ var associatedLanguages= $("#associated-languages")
 var given_name_information = $("#given-name-information")
 given_name_information.hide();
 $("#get-name-information").on("click",function(){
+    generatedNameContainer.hide();
     given_name_information.show();
     inputValue = $("#baby_name_input").val()
     console.log(inputValue)
