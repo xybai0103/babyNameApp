@@ -1,6 +1,8 @@
 /* Initialize variables */
 // an acquired API key to use babyName API
 var APIKey = 'jmjo9cnRKX3lkeCzzsTXtA==f4OpgctSgGbxedYt';
+// the container of the content for first loading page
+var firstLoadingContainer = $('#first-loading-container');
 // button to generate baby names
 var generateBtn = $('.generate-button');
 // the container of all the dynamic content for name-generating box
@@ -17,6 +19,7 @@ var popularText = $('.popular-text');
 var addNameBtn =$('.add-name-button');
 // get the names from local storage
 var names = JSON.parse(localStorage.getItem('names'))||[];
+// the container of all the dynamic content for name-list box
 var addedNameListContainer = $('#added-name-list-container');
 
 
@@ -35,6 +38,7 @@ function storeNames(){
 
 // function to generate baby names 
 function generateBabyNames() {
+  firstLoadingContainer.hide();
   given_name_information.hide();
   generatedNameContainer.show();
   // user's input for the dropdown menu and the checkbox
@@ -120,6 +124,7 @@ var associatedLanguages= $("#associated-languages")
 var given_name_information = $("#given-name-information")
 given_name_information.hide();
 $("#get-name-information").on("click",function(){
+    firstLoadingContainer.hide();
     generatedNameContainer.hide();
     given_name_information.show();
     inputValue = $("#baby_name_input").val()
