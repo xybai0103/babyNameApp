@@ -4,7 +4,7 @@ var APIKey = 'jmjo9cnRKX3lkeCzzsTXtA==f4OpgctSgGbxedYt';
 // button to generate baby names
 var generateBtn = $('.generate-button');
 // the container of all the dynamic content for name-generating box
-var generatedNameContainer = $('.generated-name-container');
+var generatedNameContainer = $('#generated-name-container');
 // the header above the generated baby names
 var generatedNnameHeader = $('.generated-name-header');
 // the text showing gender in the generated-name-header
@@ -17,12 +17,15 @@ var popularText = $('.popular-text');
 var addNameBtn =$('.add-name-button');
 // get the names from local storage
 var names = JSON.parse(localStorage.getItem('names'))||[];
+var addedNameListContainer = $('#added-name-list-container');
+
 
 
 
 /* Define funtions */
 // hide the dynamic content for name-generating box on the right when first-loading or refreshing the page
 generatedNameContainer.hide();
+addedNameListContainer.hide();
 
 
 // store the names which user added
@@ -114,7 +117,7 @@ generatedNameList.on('click','button',function(){
 var babyNameCard = $("#BabyName")
 var genderInformation = $("#gender-information")
 var associatedLanguages= $("#associated-languages")
-var given_name_information = $(".given-name-information")
+var given_name_information = $("#given-name-information")
 given_name_information.hide();
 $("#get-name-information").on("click",function(){
     given_name_information.show();
