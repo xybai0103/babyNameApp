@@ -21,7 +21,10 @@ var addNameBtn =$('.add-name-button');
 var names = JSON.parse(localStorage.getItem('names'))||[];
 // the container of all the dynamic content for name-list box
 var addedNameListContainer = $('#added-name-list-container');
-
+// button to check added baby names on the list
+var checkListBtn = $('.check-list-button');
+// a list containing the added baby names
+var addedNameList = $('.added-name-list');
 
 
 
@@ -40,6 +43,7 @@ function storeNames(){
 function generateBabyNames() {
   firstLoadingContainer.hide();
   given_name_information.hide();
+  addedNameListContainer.hide();
   generatedNameContainer.show();
   // user's input for the dropdown menu and the checkbox
   var gender = $('#gender-category').val();
@@ -71,7 +75,8 @@ function generateBabyNames() {
       for(i=0; i<data.length; i++){
         // create a list item tag for each generated name
         var generatedName = $('<li>');
-        generatedName.addClass('generated-name')
+        // add vertical margin
+        generatedName.addClass('generated-name my-3')
         generatedName.text(data[i]);
         // wire up an add-name button after each name
         var addNameBtn =$('<button>');
@@ -82,8 +87,6 @@ function generateBabyNames() {
         plusSymbol.addClass('plus-symbol fa fa-plus');
         addNameBtn.append(plusSymbol);
         generatedName.append(addNameBtn);
-        // add vertical margin
-        generatedName.addClass('my-3')
         generatedNameList.append(generatedName);
       };
     })
@@ -103,10 +106,54 @@ generatedNameList.on('click','button',function(){
   }
 });
 
+
+function displayAddedBabyNames() {
+  firstLoadingContainer.hide();
+  given_name_information.hide();
+  generatedNameContainer.hide();
+  addedNameListContainer.show();
+  //render names in a list
+  for (i=0; i<names.length; i++){
+    // create a list item tag for each added name
+    var addedName = $('<li>');
+    // add vertical margin
+    addedName.addClass('added-name my-3')
+    addedName.text(names[i]);
+    // wire up an remove-name button after each added name
+    var removeNameBtn =$('<button>');
+    removeNameBtn.addClass('remove-name-button is-size-5');
+    removeNameBtn.text('Remove ');
+    addedName.append(removeNameBtn);
+    addedNameList.append(addedName);
+    addedNameListContainer.append(addedNameList);
+  }
+}
+
+// Delegates the listener to all buttons inside the parent element
+// Add Event Listener to remove-name button
+  addedNameList.on('click','button',function(){
+  var nameToRemove = $(this).parent().text();
+  // only get the name, excluding the text in remove button
+  var nameRemove = nameToRemove.replace('Remove ', '');
+  console.log(nameRemove);
+  // Find the index of the name to remove
+  let index = names.indexOf(nameRemove);
+  // Remove the name from the array
+  names.splice(index, 1);
+  // Store the updated array of names back into local storage
+  storeNames();
+  // Remove the name and the wired remove button from the screen
+  $(this).parent().remove();
+});
+  
+
  
 /*Add Event Listeners*/
  // Add Event Listener to generate-name button
  generateBtn.click(generateBabyNames);
+
+ // Add Event Listener to check-name-list button
+ checkListBtn.click(displayAddedBabyNames);
 
 
 
@@ -129,6 +176,7 @@ given_name_information.hide();
 $("#get-name-information").on("click",function(){
     firstLoadingContainer.hide();
     generatedNameContainer.hide();
+    addedNameListContainer.hide();
     given_name_information.show();
     inputValue = $("#baby_name_input").val()
     console.log(inputValue)
