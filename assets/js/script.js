@@ -122,6 +122,7 @@ var babyNameCard = $("#BabyName")
 var genderInformation = $("#gender-information")
 var associatedLanguages= $("#associated-languages")
 var given_name_information = $("#given-name-information")
+var related_names = $("#generated-related-names")
 given_name_information.hide();
 $("#get-name-information").on("click",function(){
     firstLoadingContainer.hide();
@@ -144,8 +145,11 @@ $("#get-name-information").on("click",function(){
             if (data[0].gender == "f"){
                 genderInformation.text("Commonly Associated Gender: Female")
             }
+            else if(data[0].gender == "mf"){
+              genderInformation.text("Commonly Associated Gender: Gender Neutral")
+            }
             else{
-                genderInformation.text("Commonly Associated Gender: Female")
+              genderInformation.text("Commonly Associated Gender: Male")
             }
             var associatedLanguagesFiller = "";
             if(data[0].usages.length == 1){
@@ -158,11 +162,24 @@ $("#get-name-information").on("click",function(){
             }
             associatedLanguages.text("Commonly Associated Language: " +associatedLanguagesFiller)
         }
-
-
-
-
+        fetch("https://www.behindthename.com/api/related.json?name=" +inputValue +"&usage=eng&key=re323908171").then(function(response){
+          return response.json();
+        })
+        .then(function(data){
+          console.log(data)
+          console.log(data.names[0])
+          related_names.html("");
+          related_names.text("Related Names: ")
+          for( var i =0; i < data.names.length; i++){
+            var relatedNames = $("<button>");
+            relatedNames.addClass("relatedNameButtons");
+            relatedNames.text(data.names[i]);
+            related_names.append(relatedNames);
+            relatedNames.on("click",relatedNamesFunction)
+          }
+        })
     });
+    
     $("#addButton").on("click",function(){
         var nameAdd = $("#baby_name_input").val()
         console.log(nameAdd);
@@ -172,3 +189,38 @@ $("#get-name-information").on("click",function(){
     }})
     
 });
+
+var relatedNamesFunction = function(event){
+  event.preventDefault();
+  inputValue = $(this).text();
+  fetch("https://www.behindthename.com/api/lookup.json?name=" + inputValue+"&key=re323908171").then(function(response){
+    return response.json();
+  })
+  .then(function(data){
+    babyNameCard.text("Baby Name: "+ inputValue);
+    console.log(data)
+    if(data.error == "name could not be found"){
+      genderInformation.text("NAME CANNOT BE FOUND IN DATABASE")
+      associatedLanguages.text("NAME CANNOT BE FOUND IN DATABASE")
+    }
+    else{
+      if (data[0].gender == "f"){
+        genderInformation.text("Commonly Associated Gender: Female")
+      }
+      else{
+        genderInformation.text("Commonly Associated Gender: Female")
+      }
+      var associatedLanguagesFiller = "";
+      if(data[0].usages.length == 1){
+        associatedLanguagesFiller = data[0].usages[0].usage_full
+      }
+      else{
+        for(var i=0; i< data[0].usages.length;  i++){
+          associatedLanguagesFiller = associatedLanguagesFiller + data[0].usages[i].usage_full + ", "
+        }
+      }
+      associatedLanguages.text("Commonly Associated Language: " +associatedLanguagesFiller)
+      }
+    })
+  }
+  
