@@ -80,7 +80,7 @@ function generateBabyNames() {
         generatedName.addClass('generated-name my-3');
         generatedName.text(data[i]);
         // add an event listener to each generated name to check related information
-        generatedName.click(relatedNamesFunction);
+        generatedName.click(getNameInformation);
         // wire up an add-name button after each name
         var addNameBtn =$('<button>');
         addNameBtn.addClass('add-name-button is-size-5');
@@ -126,7 +126,7 @@ function displayAddedBabyNames() {
     addedName.addClass('added-name my-3');
     addedName.text(names[i]);
     // add an event listener to each added name to check related information
-    addedName.click(relatedNamesFunction);
+    addedName.click(getNameInformation);
     // wire up an remove-name button after each added name
     var removeNameBtn =$('<button>');
     removeNameBtn.addClass('remove-name-button is-size-5');
@@ -187,7 +187,17 @@ var getNameInformation = function(){
     generatedNameContainer.hide();
     addedNameListContainer.hide();
     given_name_information.show();
-    inputValue = $("#baby_name_input").val()
+
+    // apply the getNameInformation function to names on every dynamic-content page
+    if($(this).is('button')){
+      inputValue = $("#baby_name_input").val();
+    }else if($(this).parent().is(generatedNameList)){
+      inputValue = $(this).text().replace('Add ','');
+      console.log($(this).text().replace('Add ',''));
+    }else{
+      inputValue = $(this).text().replace('Remove ','');
+    }
+
     console.log(inputValue)
     fetch("https://www.behindthename.com/api/lookup.json?name=" + inputValue+"&key=re323908171").then(function(response){
         return response.json();
@@ -252,23 +262,7 @@ $(".get-name-information").on("click", getNameInformation);
 
 var relatedNamesFunction = function(event){
   event.preventDefault();
-  if($(this).parent().is(related_names)){
-    inputValue = $(this).text();
-  }else if($(this).parent().is(generatedNameList)){
-    inputValue = $(this).text().replace('Add ','');
-    firstLoadingContainer.hide();
-    generatedNameContainer.hide();
-    addedNameListContainer.hide();
-    given_name_information.show();
-    console.log($(this).text().replace('Add ',''));
-  }else{
-    inputValue = $(this).text().replace('Remove ','');
-    firstLoadingContainer.hide();
-    generatedNameContainer.hide();
-    addedNameListContainer.hide();
-    given_name_information.show();
-  }
-  
+  inputValue = $(this).text();
   fetch("https://www.behindthename.com/api/lookup.json?name=" + inputValue+"&key=re323908171").then(function(response){
     return response.json();
   })
