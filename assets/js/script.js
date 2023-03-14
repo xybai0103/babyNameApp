@@ -22,7 +22,7 @@ var names = JSON.parse(localStorage.getItem('names'))||[];
 // the container of all the dynamic content for name-list box
 var addedNameListContainer = $('#added-name-list-container');
 // button to check added baby names on the list
-var checkBtn = $('.check-list-button');
+var checkListBtn = $('.check-list-button');
 
 
 
@@ -41,6 +41,7 @@ function storeNames(){
 function generateBabyNames() {
   firstLoadingContainer.hide();
   given_name_information.hide();
+  addedNameListContainer.hide();
   generatedNameContainer.show();
   // user's input for the dropdown menu and the checkbox
   var gender = $('#gender-category').val();
@@ -104,10 +105,22 @@ generatedNameList.on('click','button',function(){
   }
 });
 
+
+function displayAddedBabyNames() {
+  firstLoadingContainer.hide();
+  given_name_information.hide();
+  generatedNameContainer.hide();
+  addedNameListContainer.show();
+}
+  
+
  
 /*Add Event Listeners*/
  // Add Event Listener to generate-name button
  generateBtn.click(generateBabyNames);
+
+ // Add Event Listener to check-name-list button
+ checkListBtn.click(displayAddedBabyNames);
 
 
 
@@ -129,6 +142,7 @@ given_name_information.hide();
 $("#get-name-information").on("click",function(){
     firstLoadingContainer.hide();
     generatedNameContainer.hide();
+    addedNameListContainer.hide();
     given_name_information.show();
     inputValue = $("#baby_name_input").val()
     console.log(inputValue)
