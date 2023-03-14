@@ -128,6 +128,23 @@ function displayAddedBabyNames() {
     addedNameListContainer.append(addedNameList);
   }
 }
+
+// Delegates the listener to all buttons inside the parent element
+// Add Event Listener to remove-name button
+  addedNameList.on('click','button',function(){
+  var nameToRemove = $(this).parent().text();
+  // only get the name, excluding the text in remove button
+  var nameRemove = nameToRemove.replace('Remove ', '');
+  console.log(nameRemove);
+  // Find the index of the name to remove
+  let index = names.indexOf(nameRemove);
+  // Remove the name from the array
+  names.splice(index, 1);
+  // Store the updated array of names back into local storage
+  storeNames();
+  // Remove the name and the wired remove button from the screen
+  $(this).parent().remove();
+});
   
 
  
