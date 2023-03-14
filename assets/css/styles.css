@@ -73,4 +73,15 @@ ul{
 li button{
     float: right;
 }
-
+#ButtonStyling{
+    margin: auto;
+    width: 100%;
+    padding: 15px;
+    background-color: #feecf0;
+    color: #CC0F3A;
+    border-color: #CC0F3A;
+    border-style: groove;
+    border-width: 2px;
+    border-radius: 3px;
+    word-wrap: break-word;
+}
