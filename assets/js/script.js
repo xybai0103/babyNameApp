@@ -83,6 +83,8 @@ function generateBabyNames() {
         plusSymbol.addClass('plus-symbol fa fa-plus');
         addNameBtn.append(plusSymbol);
         generatedName.append(addNameBtn);
+        // add vertical margin
+        generatedName.addClass('my-3')
         generatedNameList.append(generatedName);
       };
     })
