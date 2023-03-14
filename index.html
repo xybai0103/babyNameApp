@@ -12,10 +12,16 @@
     <title>Baby Name</title>
 </head>
 <body>
-    <nav>
-        <p>baby name generator</p>
-    </nav>
-    <main>
+    <header class='py-4'>
+      <h1 class='title is-3 has-text-centered'>BABY NAME</h1>
+      <nav class='is-flex is-justify-content-space-evenly'>
+        <a href="#given-name-information">Look Up a Baby Name</a>
+        <a href="#generated-name-container">Generate Some Baby Names</a>
+        <a href="#added-name-list-container">Check Your Name List</a>
+      </nav>
+    </header>
+
+    <main class="is-flex">
         <div id="cards">
             <div class = "card" id="Look_Up_Baby_Name">
               <header class='card-header has-background-danger'>
@@ -28,7 +34,7 @@
                 <p class='is-size-5 has-text-centered'>Given Name</p>
                 <input class="input is-danger is-size-5 column is-9 has-text-centered" id="baby_name_input" type="text" placeholder="Emma">
                 <div class='button-container box has-text-centered'>
-                  <button class="button look-up-button is-medium is-danger is-light is-outlined" id="get-name-information">
+                  <button id ="ButtonStyling" class="get-name-information">
                     Get Information About This Name
                   </button>
                 </div>
@@ -64,7 +70,7 @@
                 <!--add a generate button-->
                 <!--wrap a box to center button-->
                 <div class='button-container box has-text-centered'>
-                  <button class="button generate-button is-medium is-danger is-light is-outlined">
+                  <button id ="ButtonStyling" class="button generate-button is-medium is-danger is-light is-outlined">
                     Generate
                   </button>
                 </div>
@@ -79,7 +85,7 @@
               </header>
               <div class='card-content'>
                 <div class='button-container box has-text-centered'>
-                  <button class="button check-list-button is-medium is-danger is-light is-outlined">
+                  <button id ="ButtonStyling" class="button check-list-button is-medium is-danger is-light is-outlined">
                     Check List
                   </button>
                 </div>
@@ -87,41 +93,53 @@
             </div>
         </div>
         <div id="dynamic_content">
-          <section class='generated-name-container'>
+          <section id='first-loading-container'>
+            <p class='has-text-justified is-size-5 py-5 px-6 block'>
+              Whether you are carrying the most precious gift or you are holding your brand new bundle 
+              of joy, choosing the perfect name for your baby can be both exciting and stressful. 
+              <br><br>No worries, we are here to help!<br><br>In this place, you can look for a unique baby name, 
+              generate popular baby names, and create your own wishing list of names for your baby.<br><br>
+            <img class ='mr-5' src="./assets/images/baby.jpg"/>
+            <img class ='mt-6' src="./assets/images/parents.jpg"/>
+          </section>
+          <section id='generated-name-container'>
             <p class='generated-name-header is-size-4 has-text-weight-medium has-text-centered block'>
               10 <span class='gender-text'></span>Baby Names
               <span class='popular-text'> (Top 10% Most Popular)</span>
             </p>
             <p class='add-name is-size-5 has-text-weight-medium has-text-centered block'>
-              Add to your baby name list
+              Click the button to add the baby name to your list!
             </p>
-            <ul class='generated-name-list is-size-4 has-text-weight-medium has-text-centered'>
-              <!-- <li class='generated-name'>
-                Emma
-                <button class='add-name-button is-size-5'>Add <i class='plus-symbol fa fa-plus'></i></button>
-              </li> -->
-            </ul>
+            <!--center the generated-name-list-->
+            <div class='columns is-centered'>
+              <ul class='generated-name-list is-size-4 has-text-weight-medium'>
+                <!-- <li class='generated-name'>
+                  Emma
+                  <button class='add-name-button is-size-5'>Add <i class='plus-symbol fa fa-plus'></i></button>
+                </li> -->
+              </ul>
+            </div>
           </section>
-          <section class="given-name-information">
+          <section id="given-name-information">
             <div class="card" id="displayed-information">
               <div class="card">
                 <div class="columns">
                   <div class="column is-half" id = "BabyName">BabyName</div>
-                  <div class="column">Add to your list!<button id="addButton">Add</button></div>
+                  <div class="column">Add this baby name to your list!<button id="addButton">Add</button></div>
                 </div>
               </div>
               <div class="card" id="gender-information">Commonly Associated Gender</div>
               <div class="card" id="associated-languages">Common Associted Languages</div>
-              <div class="card">Related Names</div>
+              <div class="card" id="generated-related-names">Related Names</div>
             </div>
           </section>
           <!--Rodney's section begin to show dynamic content of added name list with remove button-->
-          <section class='added-name-list-container'>
+          <section id='added-name-list-container'>
             <p class='added-name-list-header is-size-4 has-text-weight-medium has-text-centered block'>
               Your Baby Name List
             </p>
             <p class='remove-name is-size-5 has-text-weight-medium has-text-centered block'>
-              Remove name from your list
+              Click the button to remove the baby name from your list!
             </p>
             <ul class='added-name-list is-size-4 has-text-weight-medium has-text-centered'>
               <!-- <li class='added-name'>
