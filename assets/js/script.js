@@ -75,9 +75,8 @@ function generateBabyNames() {
       for(i=0; i<data.length; i++){
         // create a list item tag for each generated name
         var generatedName = $('<li>');
-        generatedName.addClass('generated-name');
-        // add vertical margin
-        generatedName.addClass('generated-name my-3');
+        // add vertical margin and underline
+        generatedName.addClass('generated-name my-3 is-underlined');
         generatedName.text(data[i]);
         // add an event listener to each generated name to check related information
         generatedName.click(getNameInformation);
@@ -121,9 +120,8 @@ function displayAddedBabyNames() {
   for (i=0; i<names.length; i++){
     // create a list item tag for each added name
     var addedName = $('<li>');
-    addedName.addClass('added-name');
-    // add vertical margin
-    addedName.addClass('added-name my-3');
+    // add vertical margin and underline
+    addedName.addClass('added-name my-3 is-underlined');
     addedName.text(names[i]);
     // add an event listener to each added name to check related information
     addedName.click(getNameInformation);
