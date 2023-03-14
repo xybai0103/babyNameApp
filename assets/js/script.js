@@ -181,7 +181,8 @@ var associatedLanguages= $("#associated-languages")
 var given_name_information = $("#given-name-information")
 var related_names = $("#generated-related-names")
 given_name_information.hide();
-$(".get-name-information").on("click",function(){
+
+var getNameInformation = function(){
     firstLoadingContainer.hide();
     generatedNameContainer.hide();
     addedNameListContainer.hide();
@@ -245,8 +246,9 @@ $(".get-name-information").on("click",function(){
           names.push(nameAdd);
           storeNames();
     }})
-    
-});
+};
+
+$(".get-name-information").on("click", getNameInformation);
 
 var relatedNamesFunction = function(event){
   event.preventDefault();
@@ -261,6 +263,10 @@ var relatedNamesFunction = function(event){
     console.log($(this).text().replace('Add ',''));
   }else{
     inputValue = $(this).text().replace('Remove ','');
+    firstLoadingContainer.hide();
+    generatedNameContainer.hide();
+    addedNameListContainer.hide();
+    given_name_information.show();
   }
   
   fetch("https://www.behindthename.com/api/lookup.json?name=" + inputValue+"&key=re323908171").then(function(response){
