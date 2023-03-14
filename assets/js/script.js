@@ -75,13 +75,15 @@ function generateBabyNames() {
       for(i=0; i<data.length; i++){
         // create a list item tag for each generated name
         var generatedName = $('<li>');
-        // add vertical margin
-        generatedName.addClass('generated-name my-3')
+        // add vertical margin and underline
+        generatedName.addClass('generated-name my-3 is-underlined');
         generatedName.text(data[i]);
+        // add an event listener to each generated name to check related information
+        generatedName.click(getNameInformation);
         // wire up an add-name button after each name
         var addNameBtn =$('<button>');
         addNameBtn.addClass('add-name-button is-size-5');
-        addNameBtn.text('Add ')
+        addNameBtn.text('Add ');
         // add a plus symbol for the add-name button
         var plusSymbol = $('<i>');
         plusSymbol.addClass('plus-symbol fa fa-plus');
@@ -105,6 +107,8 @@ generatedNameList.on('click','button',function(){
     storeNames();
   }
 });
+// not work'Cannot create property 'guid' on string '.generated-name'
+// generatedNameList.on('click','.generated-name',relatedNamesFunction);
 
 
 function displayAddedBabyNames() {
@@ -116,9 +120,11 @@ function displayAddedBabyNames() {
   for (i=0; i<names.length; i++){
     // create a list item tag for each added name
     var addedName = $('<li>');
-    // add vertical margin
-    addedName.addClass('added-name my-3')
+    // add vertical margin and underline
+    addedName.addClass('added-name my-3 is-underlined');
     addedName.text(names[i]);
+    // add an event listener to each added name to check related information
+    addedName.click(getNameInformation);
     // wire up an remove-name button after each added name
     var removeNameBtn =$('<button>');
     removeNameBtn.addClass('remove-name-button is-size-5');
@@ -173,12 +179,23 @@ var associatedLanguages= $("#associated-languages")
 var given_name_information = $("#given-name-information")
 var related_names = $("#generated-related-names")
 given_name_information.hide();
-$(".get-name-information").on("click",function(){
+
+var getNameInformation = function(){
     firstLoadingContainer.hide();
     generatedNameContainer.hide();
     addedNameListContainer.hide();
     given_name_information.show();
-    inputValue = $("#baby_name_input").val()
+
+    // apply the getNameInformation function to names on every dynamic-content page
+    if($(this).is('button')){
+      inputValue = $("#baby_name_input").val();
+    }else if($(this).parent().is(generatedNameList)){
+      inputValue = $(this).text().replace('Add ','');
+      console.log($(this).text().replace('Add ',''));
+    }else{
+      inputValue = $(this).text().replace('Remove ','');
+    }
+
     console.log(inputValue)
     fetch("https://www.behindthename.com/api/lookup.json?name=" + inputValue+"&key=re323908171").then(function(response){
         return response.json();
@@ -237,8 +254,9 @@ $(".get-name-information").on("click",function(){
           names.push(nameAdd);
           storeNames();
     }})
-    
-});
+};
+
+$(".get-name-information").on("click", getNameInformation);
 
 var relatedNamesFunction = function(event){
   event.preventDefault();
@@ -258,10 +276,10 @@ var relatedNamesFunction = function(event){
         genderInformation.text("Commonly Associated Gender: Female")
       }
       else{
-        genderInformation.text("Commonly Associated Gender: Female")
+        genderInformation.text("Commonly Associated Gender: Male")
       }
       var associatedLanguagesFiller = "";
-      if(data[0].usages.length == 1){
+      if(data[0].usages.length === 1){
         associatedLanguagesFiller = data[0].usages[0].usage_full
       }
       else{
