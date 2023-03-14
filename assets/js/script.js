@@ -23,6 +23,8 @@ var names = JSON.parse(localStorage.getItem('names'))||[];
 var addedNameListContainer = $('#added-name-list-container');
 // button to check added baby names on the list
 var checkListBtn = $('.check-list-button');
+// a list containing the added baby names
+var addedNameList = $('.added-name-list');
 
 
 
@@ -73,7 +75,8 @@ function generateBabyNames() {
       for(i=0; i<data.length; i++){
         // create a list item tag for each generated name
         var generatedName = $('<li>');
-        generatedName.addClass('generated-name')
+        // add vertical margin
+        generatedName.addClass('generated-name my-3')
         generatedName.text(data[i]);
         // wire up an add-name button after each name
         var addNameBtn =$('<button>');
@@ -84,8 +87,6 @@ function generateBabyNames() {
         plusSymbol.addClass('plus-symbol fa fa-plus');
         addNameBtn.append(plusSymbol);
         generatedName.append(addNameBtn);
-        // add vertical margin
-        generatedName.addClass('my-3')
         generatedNameList.append(generatedName);
       };
     })
@@ -111,6 +112,21 @@ function displayAddedBabyNames() {
   given_name_information.hide();
   generatedNameContainer.hide();
   addedNameListContainer.show();
+  //render names in a list
+  for (i=0; i<names.length; i++){
+    // create a list item tag for each added name
+    var addedName = $('<li>');
+    // add vertical margin
+    addedName.addClass('added-name my-3')
+    addedName.text(names[i]);
+    // wire up an remove-name button after each added name
+    var removeNameBtn =$('<button>');
+    removeNameBtn.addClass('remove-name-button is-size-5');
+    removeNameBtn.text('Remove ');
+    addedName.append(removeNameBtn);
+    addedNameList.append(addedName);
+    addedNameListContainer.append(addedNameList);
+  }
 }
   
 
