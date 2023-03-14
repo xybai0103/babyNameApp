@@ -173,7 +173,7 @@ var associatedLanguages= $("#associated-languages")
 var given_name_information = $("#given-name-information")
 var related_names = $("#generated-related-names")
 given_name_information.hide();
-$("#get-name-information").on("click",function(){
+$(".get-name-information").on("click",function(){
     firstLoadingContainer.hide();
     generatedNameContainer.hide();
     addedNameListContainer.hide();
