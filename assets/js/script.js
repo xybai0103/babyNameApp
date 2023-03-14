@@ -21,7 +21,8 @@ var addNameBtn =$('.add-name-button');
 var names = JSON.parse(localStorage.getItem('names'))||[];
 // the container of all the dynamic content for name-list box
 var addedNameListContainer = $('#added-name-list-container');
-
+// button to check added baby names on the list
+var checkBtn = $('.check-list-button');
 
 
 
