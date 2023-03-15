@@ -199,7 +199,7 @@ var getNameInformation = function(event){
         return response.json();
     })
     .then(function(data){
-        babyNameCard.text("Baby Name: "+ inputValue);
+        babyNameCard.text("Baby Name:  "+ inputValue);
         console.log(data)
         if(data.error == "name could not be found"){
 
@@ -208,13 +208,13 @@ var getNameInformation = function(event){
         }
         else{
             if (data[0].gender == "f"){
-                genderInformation.text("Commonly Associated Gender: Female")
+                genderInformation.text("Female")
             }
             else if(data[0].gender == "mf"){
-              genderInformation.text("Commonly Associated Gender: Gender Neutral")
+              genderInformation.text("Gender Neutral")
             }
             else{
-              genderInformation.text("Commonly Associated Gender: Male")
+              genderInformation.text("Male")
             }
             var associatedLanguagesFiller = "";
             if(data[0].usages.length == 1){
@@ -225,7 +225,7 @@ var getNameInformation = function(event){
                     associatedLanguagesFiller = associatedLanguagesFiller + data[0].usages[i].usage_full + ", "
                 }
             }
-            associatedLanguages.text("Commonly Associated Language: " +associatedLanguagesFiller)
+            associatedLanguages.text(associatedLanguagesFiller)
         }
         fetch("https://www.behindthename.com/api/related.json?name=" +inputValue +"&usage=eng&key=re323908171").then(function(response){
           return response.json();
@@ -234,10 +234,9 @@ var getNameInformation = function(event){
           console.log(data)
           console.log(data.names[0])
           related_names.html("");
-          related_names.text("Related Names: ")
           for( var i =0; i < data.names.length; i++){
             var relatedNames = $("<button>");
-            relatedNames.addClass("relatedNameButtons");
+            relatedNames.addClass("is-size-4 mr-5");
             relatedNames.text(data.names[i]);
             related_names.append(relatedNames);
             relatedNames.on("click",relatedNamesFunction)
@@ -271,10 +270,10 @@ var relatedNamesFunction = function(event){
     }
     else{
       if (data[0].gender == "f"){
-        genderInformation.text("Commonly Associated Gender: Female")
+        genderInformation.text("Female")
       }
       else{
-        genderInformation.text("Commonly Associated Gender: Male")
+        genderInformation.text("Male")
       }
       var associatedLanguagesFiller = "";
       if(data[0].usages.length === 1){
@@ -285,7 +284,7 @@ var relatedNamesFunction = function(event){
           associatedLanguagesFiller = associatedLanguagesFiller + data[0].usages[i].usage_full + ", "
         }
       }
-      associatedLanguages.text("Commonly Associated Language: " +associatedLanguagesFiller)
+      associatedLanguages.text(associatedLanguagesFiller)
       }
     })
     // When user clicks the add button for any related name, it should also be stored added to the name list

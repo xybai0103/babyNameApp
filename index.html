@@ -35,7 +35,7 @@
 
     <main class="is-flex">
         <div id="cards">
-            <div class = "card" id="Look_Up_Baby_Name">
+            <div class = "card mt-5" id="Look_Up_Baby_Name">
               <header class='card-header'>
                 <!--center card header-->
                 <p class='card-header-title is-centered is-size-4 has-text-danger-light'>
@@ -53,7 +53,7 @@
               </div>
             </div>
 
-            <div class = "card" id="Name_Generator">
+            <div class = "card mt-5" id="Name_Generator">
               <header class='card-header'>
                   <!--center card header-->
                   <p class='card-header-title is-centered is-size-4 has-text-danger-light'>
@@ -88,7 +88,7 @@
                 </div>
               </div>              
             </div>
-            <div class = "card" id="Baby_Name_List">
+            <div class = "card mt-5" id="Baby_Name_List">
               <header class='card-header'>
                 <!--center card header-->
                 <p class='card-header-title is-centered is-size-4 has-text-danger-light'>
@@ -114,6 +114,28 @@
             <img class ='mr-5' src="./assets/images/baby.jpg"/>
             <img class ='mt-5' src="./assets/images/parents.jpg"/>
           </section>
+
+          <section id="given-name-information" class ='mt-5'>
+
+
+
+                <div class="columns block">
+                  <p class="column is-half is-size-3 has-text-weight-medium" id = "BabyName"></p>
+                  <p class="column is-size-4 has-text-weight-medium">Add this baby name to your list! 
+                    <button class='is-size-4 has-text-weight-medium' id="addButton">Add</button>
+                  </p>
+                </div>
+              <div class="card is-size-4 p-5" id="card">
+                <p><span class="has-text-weight-medium">Commonly Associated Gender: </span><br><span id="gender-information"></span></p>
+                <br>
+                <p><span class="has-text-weight-medium">Common Associted Languages: </span><br><span id="associated-languages"></span></p>
+                <br>
+                <p><span class="has-text-weight-medium">Related Names: </span><br><br><span id="generated-related-names"></span></p>
+              </div>
+
+
+          </section>
+
           <section id='generated-name-container' class ='mt-5'>
             <p class='generated-name-header is-size-4 has-text-weight-medium has-text-centered block'>
               10 <span class='gender-text'></span>Baby Names
@@ -134,7 +156,8 @@
               </ul>
             </div>
           </section>
-          <section id="given-name-information">
+          
+          <!-- <section id="given-name-information">
             <div id="spread"></div>
             <div class="card" id="displayed-information">
               <div class="card">
@@ -147,8 +170,8 @@
               <div class="card" id="associated-languages">Common Associted Languages</div>
               <div class="card" id="generated-related-names">Related Names</div>
             </div>
-          </section>
-          <!--section to show dynamic content of added name list with remove button-->
+          </section> -->
+      
           <section id='added-name-list-container' class ='mt-5'>
             <p class='added-name-list-header is-size-4 has-text-weight-medium has-text-centered block'>
               Your Baby Name List

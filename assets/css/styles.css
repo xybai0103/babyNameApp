@@ -18,16 +18,10 @@ header{
 }
 
 .card{
-    width: 80%;
-    border-style: groove;
-    margin: 10px;
+    width: 90%;
     background-color: #ffd6dc;
 }
 
-#spread{
-    height: 25vh;
-    width: 100%;
-}
 /*nameGenerateBox*/
 .select-gender{
     justify-content: space-evenly;
