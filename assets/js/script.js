@@ -111,7 +111,7 @@ generatedNameList.on('click','button',function(){
   }
 });
 // not work'Cannot create property 'guid' on string '.generated-name'
-// generatedNameList.on('click','.generated-name',relatedNamesFunction);
+// generatedNameList.on('click','.generated-name',getNameInformation);
 
 
 function displayAddedBabyNames() {
@@ -289,5 +289,12 @@ var relatedNamesFunction = function(event){
       associatedLanguages.text("Commonly Associated Language: " +associatedLanguagesFiller)
       }
     })
+    // When user clicks the add button for any related name, it should also be stored added to the name list
+    $("#addButton").on("click",function(){
+      var nameAdd = $(this).parent().parent().children('#BabyName').text().replace('Baby Name: ','')
+      if(!names.includes(nameAdd)){
+        names.push(nameAdd);
+        storeNames();
+  }})
   }
   
