@@ -26,6 +26,8 @@ var checkListBtn = $('.check-list-button');
 // a list containing the added baby names
 var addedNameList = $('.added-name-list');
 
+var nameInfoContainer = $('.name-info-container');
+var alert = $('.alert');
 
 
 /* Define funtions */
@@ -202,16 +204,18 @@ var getNameInformation = function(event){
         babyNameCard.text("Baby Name:  "+ inputValue);
         console.log(data)
         if(data.error == "name could not be found"){
-
-            genderInformation.text("NAME CANNOT BE FOUND IN DATABASE")
-            associatedLanguages.text("NAME CANNOT BE FOUND IN DATABASE")
+            nameInfoContainer.hide();
+            alert.show();
+            alert.text("Sorry! Name Cannot be Found in Database");
         }
         else{
+            nameInfoContainer.show();
+            alert.hide();
             if (data[0].gender == "f"){
                 genderInformation.text("Female")
             }
             else if(data[0].gender == "mf"){
-              genderInformation.text("Gender Neutral")
+              genderInformation.text("Neutral")
             }
             else{
               genderInformation.text("Male")
@@ -265,10 +269,13 @@ var relatedNamesFunction = function(event){
     babyNameCard.text("Baby Name: "+ inputValue);
     console.log(data)
     if(data.error == "name could not be found"){
-      genderInformation.text("NAME CANNOT BE FOUND IN DATABASE")
-      associatedLanguages.text("NAME CANNOT BE FOUND IN DATABASE")
+      nameInfoContainer.hide();
+      alert.show();
+      alert.text("Sorry! Name Cannot be Found in Database");
     }
     else{
+      nameInfoContainer.show();
+      alert.hide();
       if (data[0].gender == "f"){
         genderInformation.text("Female")
       }
