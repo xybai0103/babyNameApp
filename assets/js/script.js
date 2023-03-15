@@ -77,9 +77,12 @@ function generateBabyNames() {
         var generatedName = $('<li>');
         // add vertical margin and underline
         generatedName.addClass('generated-name my-3 is-underlined');
-        generatedName.text(data[i]);
+        // add a span element to wrap name within the li element 
+        var generatedNameSpan = $('<span>');
+        generatedNameSpan.text(data[i]);
+        generatedName.append(generatedNameSpan);
         // add an event listener to each generated name to check related information
-        generatedName.click(getNameInformation);
+        generatedNameSpan.click(getNameInformation);
         // wire up an add-name button after each name
         var addNameBtn =$('<button>');
         addNameBtn.addClass('add-name-button is-size-5');
