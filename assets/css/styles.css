@@ -30,7 +30,11 @@ header{
     margin: 10px;
     background-color: #e6beb9;
 }
-
+#spread{
+    height: 25vh;
+    width: 100%;
+    
+}
 /*nameGenerateBox*/
 .select-gender{
     justify-content: space-evenly;
