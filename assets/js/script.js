@@ -138,7 +138,6 @@ function displayAddedBabyNames() {
     removeNameBtn.text('Remove ');
     addedName.append(removeNameBtn);
     addedNameList.append(addedName);
-    addedNameListContainer.append(addedNameList);
   }
 }
 
