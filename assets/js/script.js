@@ -240,7 +240,7 @@ var getNameInformation = function(event){
           related_names.html("");
           for( var i =0; i < data.names.length; i++){
             var relatedNames = $("<button>");
-            relatedNames.addClass("is-size-4 mr-5");
+            relatedNames.addClass("is-size-4 mr-4");
             relatedNames.text(data.names[i]);
             related_names.append(relatedNames);
             relatedNames.on("click",relatedNamesFunction)

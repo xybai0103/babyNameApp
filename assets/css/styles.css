@@ -6,19 +6,7 @@ header{
     text-align: center;
 }
 
-#cards{
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-#dynamic_content{
-    width: 60%;
-}
-
 .card{
-    width: 90%;
     background-color: #ffd6dc;
 }
 
