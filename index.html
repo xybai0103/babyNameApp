@@ -25,20 +25,20 @@
 </head>
 <body>
     <header class='py-4'>
-      <h1 class='title is-3 has-text-centered'>BABY NAME</h1>
+      <h1 class='title is-3 has-text-centered has-text-danger-light'>BABY NAME</h1>
       <nav class='is-flex is-justify-content-space-evenly'>
-        <a href="#given-name-information">Look Up a Baby Name</a>
-        <a href="#generated-name-container">Generate Some Baby Names</a>
-        <a href="#added-name-list-container">Check Your Name List</a>
+        <a class='has-text-danger-light' href="#given-name-information">Look Up a Baby Name</a>
+        <a class='has-text-danger-light' href="#generated-name-container">Generate Some Baby Names</a>
+        <a class='has-text-danger-light' href="#added-name-list-container">Check Your Name List</a>
       </nav>
     </header>
 
     <main class="is-flex">
         <div id="cards">
             <div class = "card" id="Look_Up_Baby_Name">
-              <header class='card-header has-background-danger'>
+              <header class='card-header'>
                 <!--center card header-->
-                <p class='card-header-title is-centered is-size-4'>
+                <p class='card-header-title is-centered is-size-4 has-text-danger-light'>
                    Look Up Baby Name
                 </p>           
               </header>
@@ -54,9 +54,9 @@
             </div>
 
             <div class = "card" id="Name_Generator">
-              <header class='card-header has-background-danger'>
+              <header class='card-header'>
                   <!--center card header-->
-                  <p class='card-header-title is-centered is-size-4'>
+                  <p class='card-header-title is-centered is-size-4 has-text-danger-light'>
                     Randomly Generate 10 Baby Names
                   </p>           
               </header>
@@ -89,9 +89,9 @@
               </div>              
             </div>
             <div class = "card" id="Baby_Name_List">
-              <header class='card-header has-background-danger'>
+              <header class='card-header'>
                 <!--center card header-->
-                <p class='card-header-title is-centered is-size-4'>
+                <p class='card-header-title is-centered is-size-4 has-text-danger-light'>
                   Check which baby names you added to your list
                 </p>           
               </header>
@@ -112,9 +112,9 @@
               <br><br>No worries, we are here to help!<br><br>In this place, you can look for a unique baby name, 
               generate popular baby names, and create your own wishing list of names for your baby.<br><br>
             <img class ='mr-5' src="./assets/images/baby.jpg"/>
-            <img class ='mt-6' src="./assets/images/parents.jpg"/>
+            <img class ='mt-5' src="./assets/images/parents.jpg"/>
           </section>
-          <section id='generated-name-container'>
+          <section id='generated-name-container' class ='mt-5'>
             <p class='generated-name-header is-size-4 has-text-weight-medium has-text-centered block'>
               10 <span class='gender-text'></span>Baby Names
               <span class='popular-text'> (Top 10% Most Popular)</span>
@@ -149,21 +149,23 @@
             </div>
           </section>
           <!--section to show dynamic content of added name list with remove button-->
-          <section id='added-name-list-container'>
+          <section id='added-name-list-container' class ='mt-5'>
             <p class='added-name-list-header is-size-4 has-text-weight-medium has-text-centered block'>
               Your Baby Name List
             </p>
             <p class='remove-name is-size-5 has-text-weight-medium has-text-centered block'>
               Click the button to remove the baby name from your list!
             </p>
-            <ul class='added-name-list is-size-4 has-text-weight-medium has-text-centered'>
-              <!-- <li class='added-name'>
-                <span>
-                  Emma
-                </span>
-                <button class='remove-name-button is-size-5'>Remove</button>
-              </li> -->
-            </ul>
+            <div class='columns is-centered'>
+              <ul class='added-name-list is-size-4 has-text-weight-medium'>
+                <!-- <li class='added-name'>
+                  <span>
+                    Emma
+                  </span>
+                  <button class='remove-name-button is-size-5'>Add <i class='plus-symbol fa fa-plus'></i></button>
+                </li> -->
+              </ul>
+            </div>
           </section>
         </div>
     </main>

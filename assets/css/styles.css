@@ -23,10 +23,10 @@ header{
     margin: 10px;
     background-color: #ffd6dc;
 }
+
 #spread{
     height: 25vh;
     width: 100%;
-    
 }
 /*nameGenerateBox*/
 .select-gender{
@@ -71,6 +71,7 @@ ul{
 li button{
     float: right;
 }
+
 #ButtonStyling{
     margin: auto;
     width: 100%;
@@ -80,6 +81,6 @@ li button{
     border-color: #CC0F3A;
     border-style: groove;
     border-width: 2px;
-    border-radius: 3px;
+    border-radius: 6px;
     word-wrap: break-word;
 }
