@@ -116,6 +116,7 @@ function displayAddedBabyNames() {
   given_name_information.hide();
   generatedNameContainer.hide();
   addedNameListContainer.show();
+  addedNameList.html('');
   //render names in a list
   for (i=0; i<names.length; i++){
     // create a list item tag for each added name
@@ -161,14 +162,6 @@ function displayAddedBabyNames() {
  // Add Event Listener to check-name-list button
  checkListBtn.click(displayAddedBabyNames);
 
-
-
-  
-  
-
-
-
-
  
 
 //var dynamic_content = document.getElementById("dynamic_content")
@@ -180,14 +173,14 @@ var given_name_information = $("#given-name-information")
 var related_names = $("#generated-related-names")
 given_name_information.hide();
 
-var getNameInformation = function(){
+var getNameInformation = function(event){
     firstLoadingContainer.hide();
     generatedNameContainer.hide();
     addedNameListContainer.hide();
     given_name_information.show();
 
     // apply the getNameInformation function to names on every dynamic-content page
-    if($(this).is('button')){
+    if($(this).is('.get-name-information')){
       inputValue = $("#baby_name_input").val();
     }else if($(this).parent().is(generatedNameList)){
       inputValue = $(this).text().replace('Add ','');
