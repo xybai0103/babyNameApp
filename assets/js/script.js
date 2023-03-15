@@ -77,9 +77,12 @@ function generateBabyNames() {
         var generatedName = $('<li>');
         // add vertical margin and underline
         generatedName.addClass('generated-name my-3 is-underlined');
-        generatedName.text(data[i]);
+        // add a span element to wrap name within the li element 
+        var generatedNameSpan = $('<span>');
+        generatedNameSpan.text(data[i]);
+        generatedName.append(generatedNameSpan);
         // add an event listener to each generated name to check related information
-        generatedName.click(getNameInformation);
+        generatedNameSpan.click(getNameInformation);
         // wire up an add-name button after each name
         var addNameBtn =$('<button>');
         addNameBtn.addClass('add-name-button is-size-5');
@@ -108,7 +111,7 @@ generatedNameList.on('click','button',function(){
   }
 });
 // not work'Cannot create property 'guid' on string '.generated-name'
-// generatedNameList.on('click','.generated-name',relatedNamesFunction);
+// generatedNameList.on('click','.generated-name',getNameInformation);
 
 
 function displayAddedBabyNames() {
@@ -116,15 +119,19 @@ function displayAddedBabyNames() {
   given_name_information.hide();
   generatedNameContainer.hide();
   addedNameListContainer.show();
+  addedNameList.html('');
   //render names in a list
   for (i=0; i<names.length; i++){
     // create a list item tag for each added name
     var addedName = $('<li>');
     // add vertical margin and underline
     addedName.addClass('added-name my-3 is-underlined');
-    addedName.text(names[i]);
+    // add a span element to wrap name within the li element 
+    var addedNameSpan = $('<span>');
+    addedNameSpan.text(names[i]);
+    addedName.append(addedNameSpan);
     // add an event listener to each added name to check related information
-    addedName.click(getNameInformation);
+    addedNameSpan.click(getNameInformation);
     // wire up an remove-name button after each added name
     var removeNameBtn =$('<button>');
     removeNameBtn.addClass('remove-name-button is-size-5');
@@ -161,14 +168,6 @@ function displayAddedBabyNames() {
  // Add Event Listener to check-name-list button
  checkListBtn.click(displayAddedBabyNames);
 
-
-
-  
-  
-
-
-
-
  
 
 //var dynamic_content = document.getElementById("dynamic_content")
@@ -180,14 +179,14 @@ var given_name_information = $("#given-name-information")
 var related_names = $("#generated-related-names")
 given_name_information.hide();
 
-var getNameInformation = function(){
+var getNameInformation = function(event){
     firstLoadingContainer.hide();
     generatedNameContainer.hide();
     addedNameListContainer.hide();
     given_name_information.show();
 
     // apply the getNameInformation function to names on every dynamic-content page
-    if($(this).is('button')){
+    if($(this).is('.get-name-information')){
       inputValue = $("#baby_name_input").val();
     }else if($(this).parent().is(generatedNameList)){
       inputValue = $(this).text().replace('Add ','');
@@ -290,5 +289,12 @@ var relatedNamesFunction = function(event){
       associatedLanguages.text("Commonly Associated Language: " +associatedLanguagesFiller)
       }
     })
+    // When user clicks the add button for any related name, it should also be stored added to the name list
+    $("#addButton").on("click",function(){
+      var nameAdd = $(this).parent().parent().children('#BabyName').text().replace('Baby Name: ','')
+      if(!names.includes(nameAdd)){
+        names.push(nameAdd);
+        storeNames();
+  }})
   }
   
