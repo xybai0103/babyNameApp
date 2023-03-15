@@ -126,9 +126,12 @@ function displayAddedBabyNames() {
     var addedName = $('<li>');
     // add vertical margin and underline
     addedName.addClass('added-name my-3 is-underlined');
-    addedName.text(names[i]);
+    // add a span element to wrap name within the li element 
+    var addedNameSpan = $('<span>');
+    addedNameSpan.text(names[i]);
+    addedName.append(addedNameSpan);
     // add an event listener to each added name to check related information
-    addedName.click(getNameInformation);
+    addedNameSpan.click(getNameInformation);
     // wire up an remove-name button after each added name
     var removeNameBtn =$('<button>');
     removeNameBtn.addClass('remove-name-button is-size-5');
