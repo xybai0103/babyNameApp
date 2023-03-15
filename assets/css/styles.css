@@ -1,40 +1,15 @@
-body{
-    background-color: #ccd8d2;
-}
-
 header{
     border-style: groove;
     border-right: 0;
     border-left: 0;
     border-top: 0;
     text-align: center;
-    background-color: #ccd8d2;
-}
-
-#cards{
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #cdd8ca;
-}
-#dynamic_content{
-    width: 60%;
-    background-color: #efddcf;
 }
 
 .card{
-    width: 80%;
-    border-style: groove;
-    margin: 10px;
-    background-color: #e6beb9;
+    background-color: #ffd6dc;
 }
-#spread{
-    height: 25vh;
-    width: 100%;
-    
-}
+
 /*nameGenerateBox*/
 .select-gender{
     justify-content: space-evenly;
@@ -55,7 +30,7 @@ header{
 }
 
 .button-container{
-    background-color: #e6beb9;
+    background-color: #ffd6dc;
 }
 
 /*searchNameBox*/
@@ -78,15 +53,16 @@ ul{
 li button{
     float: right;
 }
+
 #ButtonStyling{
     margin: auto;
     width: 100%;
     padding: 15px;
-    background-color: #feecf0;
+    background-color: #ffd6dc;
     color: #CC0F3A;
     border-color: #CC0F3A;
     border-style: groove;
     border-width: 2px;
-    border-radius: 3px;
+    border-radius: 6px;
     word-wrap: break-word;
 }

@@ -10,23 +10,35 @@
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css'>
     <link rel="stylesheet" href="./assets/css/styles.css">
     <title>Baby Name</title>
+    <style>
+      header {
+        background-image: url("./assets/images/bg1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      body {
+        background-image: url("./assets/images/bg2.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
 </head>
 <body>
     <header class='py-4'>
-      <h1 class='title is-3 has-text-centered'>BABY NAME</h1>
+      <h1 class='title is-3 has-text-centered has-text-danger-light'>BABY NAME</h1>
       <nav class='is-flex is-justify-content-space-evenly'>
-        <a href="#given-name-information">Look Up a Baby Name</a>
-        <a href="#generated-name-container">Generate Some Baby Names</a>
-        <a href="#added-name-list-container">Check Your Name List</a>
+        <a class='has-text-danger-light' href="#Look_Up_Baby_Name">Look Up a Baby Name</a>
+        <a class='has-text-danger-light' href="#Name_Generator">Generate Some Baby Names</a>
+        <a class='has-text-danger-light' href="#Baby_Name_List">Check Your Name List</a>
       </nav>
     </header>
 
-    <main class="is-flex">
-        <div id="cards">
-            <div class = "card" id="Look_Up_Baby_Name">
-              <header class='card-header has-background-danger'>
+    <main class="columns">
+        <div id="cards" class="column is-one-third mx-5">
+            <div class = "card mt-5" id="Look_Up_Baby_Name">
+              <header class='card-header'>
                 <!--center card header-->
-                <p class='card-header-title is-centered is-size-4'>
+                <p class='card-header-title is-centered is-size-4 has-text-danger-light'>
                    Look Up Baby Name
                 </p>           
               </header>
@@ -34,17 +46,17 @@
                 <p class='is-size-5 has-text-centered'>Given Name</p>
                 <input class="input is-danger is-size-5 column is-9 has-text-centered" id="baby_name_input" type="text" placeholder="Emma">
                 <div class='button-container box has-text-centered'>
-                  <button id ="ButtonStyling" class="get-name-information">
+                  <button id ="ButtonStyling" class="get-name-information is-size-5">
                     Get Information About This Name
                   </button>
                 </div>
               </div>
             </div>
 
-            <div class = "card" id="Name_Generator">
-              <header class='card-header has-background-danger'>
+            <div class = "card mt-5" id="Name_Generator">
+              <header class='card-header'>
                   <!--center card header-->
-                  <p class='card-header-title is-centered is-size-4'>
+                  <p class='card-header-title is-centered is-size-4 has-text-danger-light'>
                     Randomly Generate 10 Baby Names
                   </p>           
               </header>
@@ -76,10 +88,10 @@
                 </div>
               </div>              
             </div>
-            <div class = "card" id="Baby_Name_List">
-              <header class='card-header has-background-danger'>
+            <div class = "card mt-5" id="Baby_Name_List">
+              <header class='card-header'>
                 <!--center card header-->
-                <p class='card-header-title is-centered is-size-4'>
+                <p class='card-header-title is-centered is-size-4 has-text-danger-light'>
                   Check which baby names you added to your list
                 </p>           
               </header>
@@ -92,17 +104,35 @@
               </div>          
             </div>
         </div>
-        <div id="dynamic_content">
+        <div id="dynamic_content" class="column mx-4">
           <section id='first-loading-container'>
-            <p class='has-text-justified is-size-5 py-5 px-6 block'>
+            <p class='has-text-justified is-size-5 py-5 block'>
               Whether you are carrying the most precious gift or you are holding your brand new bundle 
               of joy, choosing the perfect name for your baby can be both exciting and stressful. 
               <br><br>No worries, we are here to help!<br><br>In this place, you can look for a unique baby name, 
               generate popular baby names, and create your own wishing list of names for your baby.<br><br>
             <img class ='mr-5' src="./assets/images/baby.jpg"/>
-            <img class ='mt-6' src="./assets/images/parents.jpg"/>
+            <img class ='mt-5' src="./assets/images/parents.jpg"/>
           </section>
-          <section id='generated-name-container'>
+
+          <section id="given-name-information" class ='mt-5'>
+            <div class="columns block">
+              <p class="column is-half is-size-3 has-text-weight-medium" id = "BabyName"></p>
+              <p class="column is-size-4 has-text-weight-medium">Add this baby name to your list! 
+                <button class='is-size-4 has-text-weight-medium' id="addButton">Add</button>
+              </p>
+            </div>
+            <p class="alert is-size-4 my-6 is-italic"></p>
+            <div class="name-info-container card is-size-4 p-5" id="card">
+              <p><span class="has-text-weight-medium">Commonly Associated Gender: </span><br><span id="gender-information"></span></p>
+              <br>
+              <p><span class="has-text-weight-medium">Common Associted Languages: </span><br><span id="associated-languages"></span></p>
+              <br>
+              <p><span class="has-text-weight-medium">Related Names: </span><br><br><span id="generated-related-names"></span></p>
+            </div>
+          </section>
+
+          <section id='generated-name-container' class ='mt-5'>
             <p class='generated-name-header is-size-4 has-text-weight-medium has-text-centered block'>
               10 <span class='gender-text'></span>Baby Names
               <span class='popular-text'> (Top 10% Most Popular)</span>
@@ -122,7 +152,8 @@
               </ul>
             </div>
           </section>
-          <section id="given-name-information">
+          
+          <!-- <section id="given-name-information">
             <div id="spread"></div>
             <div class="card" id="displayed-information">
               <div class="card">
@@ -135,25 +166,26 @@
               <div class="card" id="associated-languages">Common Associted Languages</div>
               <div class="card" id="generated-related-names">Related Names</div>
             </div>
-          </section>
-          <!--Rodney's section begin to show dynamic content of added name list with remove button-->
-          <section id='added-name-list-container'>
+          </section> -->
+      
+          <section id='added-name-list-container' class ='mt-5'>
             <p class='added-name-list-header is-size-4 has-text-weight-medium has-text-centered block'>
               Your Baby Name List
             </p>
             <p class='remove-name is-size-5 has-text-weight-medium has-text-centered block'>
               Click the button to remove the baby name from your list!
             </p>
-            <ul class='added-name-list is-size-4 has-text-weight-medium has-text-centered'>
-              <!-- <li class='added-name'>
-                <span>
-                  Emma
-                </span>
-                <button class='remove-name-button is-size-5'>Remove</button>
-              </li> -->
-            </ul>
+            <div class='columns is-centered'>
+              <ul class='added-name-list is-size-4 has-text-weight-medium'>
+                <!-- <li class='added-name'>
+                  <span>
+                    Emma
+                  </span>
+                  <button class='remove-name-button is-size-5'>Add <i class='plus-symbol fa fa-plus'></i></button>
+                </li> -->
+              </ul>
+            </div>
           </section>
-          <!--End of Rodney's section-->
         </div>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
